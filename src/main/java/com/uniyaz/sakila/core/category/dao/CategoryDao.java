@@ -1,15 +1,16 @@
 package com.uniyaz.sakila.core.category.dao;
 
 import com.uniyaz.sakila.core.category.domain.Category;
-import com.uniyaz.sakila.core.film.domain.Film;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.uniyaz.sakila.core.common.BaseRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
-public interface CategoryDao extends JpaRepository<Category,Long> {
-    @Query(value ="select category_name as categoryname, last_update as lastUpdate from category where category_name LIKE '%?1%' or last_update LIKE '%?1%'",nativeQuery =  true)
-    List<Film> searchCategory(String data);
+public interface CategoryDao extends BaseRepository<Category> {
+    @Query("select category from Category category where category.categoryName = :countryName")
+    public List<Category> findAllByName(@Param("countryName") String countryName);
 }

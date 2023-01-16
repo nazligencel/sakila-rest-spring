@@ -6,7 +6,6 @@ import com.uniyaz.sakila.core.actor.ActorDto;
 import com.uniyaz.sakila.core.actor.domain.Actor;
 import com.uniyaz.sakila.core.actor.service.ActorService;
 import com.uniyaz.sakila.core.common.BaseController;
-import com.uniyaz.sakila.core.common.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

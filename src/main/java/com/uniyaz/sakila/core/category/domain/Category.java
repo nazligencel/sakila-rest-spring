@@ -25,7 +25,7 @@ public class Category extends BaseEntity {
 
     @Override
     public Long getId() {
-        return null;
+        return id;
     }
 
     public void setId(Long id) {
