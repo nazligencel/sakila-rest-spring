@@ -1,6 +1,7 @@
 package com.uniyaz.sakila.core.country.service;
 
 import com.uniyaz.sakila.core.actor.domain.Actor;
+import com.uniyaz.sakila.core.common.BaseService;
 import com.uniyaz.sakila.core.country.dao.CountryDao;
 import com.uniyaz.sakila.core.country.domain.Country;
 import com.uniyaz.sakila.core.country.dto.CountryCityCountDto;
@@ -13,46 +14,15 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class CountryService {
+public class CountryService extends BaseService<Country, CountryDao> {
 
     @Autowired
     CountryDao countryDao;
 
-    public ResponseEntity<Map<REnum,Object>> save(Country country){
-        Country countrySave=countryDao.save(country);
-        Map<REnum,Object> countryList=new LinkedHashMap<>();
-        countryList.put(REnum.status,true);
-        countryList.put(REnum.result,countrySave);
 
-        return new ResponseEntity<>(countryList, HttpStatus.OK);
-    }
-
-    public ResponseEntity<Map<REnum,Object>> findAll(){
-        Map<REnum,Object> countryList=new LinkedHashMap<>();
-        countryList.put(REnum.status,true);
-        countryList.put(REnum.result,countryDao.findAll());
-
-        return new ResponseEntity(countryList,HttpStatus.OK);
-    }
-
-    public ResponseEntity<Map<String,Object>> delete(Long id){
-        Map<REnum,Object> countryList=new LinkedHashMap<>();
-
-        try {
-            countryDao.deleteById(id);
-            countryList.put(REnum.status,true);
-            return  new ResponseEntity(countryList,HttpStatus.OK);
-        }catch (Exception e){
-            countryList.put(REnum.status,false);
-            countryList.put(REnum.message,e.getMessage());
-
-            return new ResponseEntity(countryList,HttpStatus.BAD_REQUEST);
-        }
-    }
     public List<Country> findAllByName(String countryName) {
         return countryDao.findAllByName(countryName);
     }
-
 
     public Country findById(Long countryId) {
         return countryDao.findById(countryId).get();
@@ -61,4 +31,6 @@ public class CountryService {
     public List<CountryCityCountDto> findCountryCityCountDto() {
         return countryDao.findCountryCityCountDto();
     }
+
+
 }

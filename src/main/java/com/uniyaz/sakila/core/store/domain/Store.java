@@ -20,11 +20,11 @@ public class Store extends BaseEntity {
     @Column(name = "last_update")
     private Date lastUpdate;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "manager_staff_id")
     @ForeignKey(name = "fk_store_staff")
     private Staff staff;

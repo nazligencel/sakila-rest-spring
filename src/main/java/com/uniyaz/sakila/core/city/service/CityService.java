@@ -1,7 +1,5 @@
 package com.uniyaz.sakila.core.city.service;
 
-
-import com.uniyaz.sakila.core.actor.domain.Actor;
 import com.uniyaz.sakila.core.city.dao.CityDao;
 import com.uniyaz.sakila.core.city.domain.City;
 import com.uniyaz.sakila.core.city.dto.CityCascadeSaveRequestDto;

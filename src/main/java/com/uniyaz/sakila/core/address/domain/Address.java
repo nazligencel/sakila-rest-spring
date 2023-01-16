@@ -25,7 +25,7 @@ public class Address extends BaseEntity {
     @Column(name = "district")
     private String district;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "city_id")
     @ForeignKey(name = "fk_address_city")
     private City city;
